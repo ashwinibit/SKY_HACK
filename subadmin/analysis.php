@@ -46,7 +46,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     ?>
     
     <div class="card">
-  <div class="wrapper">
+    <div class="wrapper">
       
       <div>
           
@@ -189,7 +189,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           
       </div>
 
-</div>
-</div>
+    </div>
+    </div>
 </body>
 </html>
