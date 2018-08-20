@@ -1,0 +1,24 @@
+<?php
+
+
+$obj = json_decode($json,true);
+//$rid=$obj['name'];
+$name=$obj['name'];
+$uid=$obj['uid'];
+$gender=$obj['gender'];
+$dob=$obj['dob']; 
+$address=$obj['address'];
+$location=$obj['location'];
+
+
+$con=mysqli_connect("localhost","root","");
+		mysqli_select_db($con,"sky");
+		
+		$result=mysqli_query($con,"INSERT INTO `regestration`(`r_id`, `name`, `u_id`, `gender`, `dob`, `address`, `loc`) 
+		VALUES (``,`$name`,`$uid`,`$gender`,`dob`,`$address`,`$location`)");
+		
+		//$result=mysqli_query($con,"select * from login where username='$username' and password='$password'");
+	//$n1 = mysqli_fetch_assoc($result);
+
+
+ ?>
