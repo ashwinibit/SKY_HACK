@@ -2,42 +2,9 @@
 <html>
 <head>
 
-<style>
-    .wrapper {
-    display: grid;
-    grid-template-rows: repeat(3, 200px);
-    grid-gap: 10px;
-    grid-auto-flow: column;
-    grid-auto-columns: 300px 100px;
-}
-* {box-sizing: border-box;}
-
-.wrapper {
-    border: 2px solid #f76707;
-    border-radius: 5px;
-    background-color: #fff4e6;
-}
-
-.wrapper  div {
-    border: 2px solid #ffa94d;
-    border-radius: 5px;
-    background-color: #ffd8a8;
-    padding: 1em;
-    color: #d9480f;
-}
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css">
 
 
-.card {
-
-box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-  max-width: 500px;
-  margin: auto;
-  text-align: left;
-  font-family: arial;
-  top:10%;
-}
-
-</style>
 
 </head>
 <body>
@@ -45,10 +12,135 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
     include './nav/navigation.php';
     ?>
     
-    <div class="card">
-    <div class="wrapper">
+    
+    <div  class="container-fluid row">
       
-      <div>
+      <div class='card'>
+          
+		                  <form method="POST">
+                    
+                            <label for="department">Select Catogery</label>
+                            <select id="sid" name="sid">
+                            <option value="All">All</option>
+                            <option value="Labour">Labour</option>
+                            <option value="Student">Student</option>
+                            <option value="Services">Services</option>
+                            </select>
+                    
+                    <button type="submit" class="aprovebtn" value="aprove" name="aprove" >Search</button>
+                         
+                </form>
+		  
+		  
+        <?php
+           // echo ("No of Schemes in each Department");
+        //echo '."<br>';
+		
+		if(isset($_POST['aprove'])){
+			
+			$id=$_POST['sid'];
+          $conn = mysqli_connect('localhost','root','','anjor');
+			if($conn){
+                    $sql = "SELECT count(`scheme_ID`) FROM `schemes_details` WHERE `category` ='$id'";
+
+                    //$sql = "SELECT count(`scheme_ID`) FROM `schemes_details`";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+						echo "<hr>";
+                        echo "<div border='1'>TOTAL NO OF SCHEMES</th>";
+						
+                        while($row = $result->fetch_assoc()) {
+							
+							echo "<div>".$row['count(`scheme_ID`)']."</div>";
+ 
+                                     }
+                            echo "</div>";     
+				
+                    } 
+                    else {
+                        echo "0 results";
+                    }
+					
+                    $conn->close();			
+			}
+	}
+        ?>
+          
+          
+      </div>
+      <div class='card'>
+          
+<?php
+           // echo ("No of Schemes in each Department");
+        //echo '."<br>';
+		
+		
+          $conn = mysqli_connect('localhost','root','','anjor');
+			if($conn){
+                    $sql = "SELECT count(`scheme_ID`) FROM `schemes_details`";
+
+                    //$sql = "SELECT count(`scheme_ID`) FROM `schemes_details`";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+						
+                        echo "<div border='1'>TOTAL NO OF SCHEMES</th>";
+						echo "<hr>";
+                        while($row = $result->fetch_assoc()) {
+							
+							echo "<div>".$row['count(`scheme_ID`)']."</div>";
+ 
+                                     }
+                            echo "</div>";     
+				
+                    } 
+                    else {
+                        echo "0 results";
+                    }
+					
+                    $conn->close();			
+			}
+	
+        ?>
+          
+          
+      </div>
+      <div class = 'card'>
+          
+        <?php
+           // echo ("No of Schemes in each Department");
+        //echo '."<br>';
+		
+		
+          $conn = mysqli_connect('localhost','root','','sky');
+			if($conn){
+                    $sql = "SELECT * FROM `login` WHERE `role` = 'subadmin'";
+
+                    //$sql = "SELECT count(`scheme_ID`) FROM `schemes_details`";
+                    $result = $conn->query($sql);
+                    if ($result->num_rows > 0) {
+						
+                        echo "<div border='1'>List OF SCHEMES</th>";
+						echo "<hr>";
+                        while($row = $result->fetch_assoc()) {
+							
+							echo "<div>".$row['username']."</div>";
+ 
+                                     }
+                            echo "</div>";     
+				
+                    } 
+                    else {
+                        echo "0 results";
+                    }
+					
+                    $conn->close();			
+			}
+	
+        ?>
+          
+          
+      </div>
+      <div class='card'>
           
         <?php
             echo ("No of Schemes in each Department");
@@ -64,120 +156,15 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
                     if ($result->num_rows > 0) {
                         
-                        echo "<table border='1'><th>S_ID</th><th>S_Name</th><th>Department</th>";
+                        echo "<div border='1'><th>S_ID</th><th>S_Name</th><th>Department</th>";
                         while($row = $result->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>".$row['S_ID']."</td>";
-                                    echo "<td>".$row['S_Name']."</td>";
-                                    echo "<td>".$row['department']."</td>";
-                                    echo "</tr>";
+                                    echo "<div>";
+                                    echo "<div>".$row['S_ID']."</div>";
+                                    echo "<div>".$row['S_Name']."</div>";
+                                    echo "<div>".$row['department']."</div>";
+                                    echo "</div>";
                                      }
-                            echo "</table>";         
-                    } 
-                    else {
-                        echo "0 results";
-                    }
-                    $conn->close();			
-		}
-        ?>
-          
-          
-      </div>
-      <div>
-          
-        <?php
-            echo ("No of Schemes in each Department");
-        echo '."<br>';
-          $conn = mysqli_connect('localhost','root','','sky');
-		if($conn){
-                    $sql = "SELECT * FROM `scheme`";
-
-                    //$sql = "SELECT `S_ID`,`S_Name` FROM `scheme` GROUP BY `department` ";
-                    $result = $conn->query($sql);
-                    
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        echo "<table border='1'><th>S_ID</th><th>S_Name</th><th>Department</th>";
-                        while($row = $result->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>".$row['S_ID']."</td>";
-                                    echo "<td>".$row['S_Name']."</td>";
-                                    echo "<td>".$row['department']."</td>";
-                                    echo "</tr>";
-                                     }
-                            echo "</table>";         
-                    } 
-                    else {
-                        echo "0 results";
-                    }
-                    $conn->close();			
-		}
-        ?>
-          
-          
-      </div>
-      <div>
-          
-        <?php
-            echo ("No of Schemes in each Department");
-        echo '."<br>';
-          $conn = mysqli_connect('localhost','root','','sky');
-		if($conn){
-                    $sql = "SELECT * FROM `scheme`";
-
-                    //$sql = "SELECT `S_ID`,`S_Name` FROM `scheme` GROUP BY `department` ";
-                    $result = $conn->query($sql);
-                    
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        echo "<table border='1'><th>S_ID</th><th>S_Name</th><th>Department</th>";
-                        while($row = $result->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>".$row['S_ID']."</td>";
-                                    echo "<td>".$row['S_Name']."</td>";
-                                    echo "<td>".$row['department']."</td>";
-                                    echo "</tr>";
-                                     }
-                            echo "</table>";         
-                    } 
-                    else {
-                        echo "0 results";
-                    }
-                    $conn->close();			
-		}
-        ?>
-          
-          
-      </div>
-      <div>
-          
-        <?php
-            echo ("No of Schemes in each Department");
-        echo '."<br>';
-          $conn = mysqli_connect('localhost','root','','sky');
-		if($conn){
-                    $sql = "SELECT * FROM `scheme`";
-
-                    //$sql = "SELECT `S_ID`,`S_Name` FROM `scheme` GROUP BY `department` ";
-                    $result = $conn->query($sql);
-                    
-                    
-
-                    if ($result->num_rows > 0) {
-                        
-                        echo "<table border='1'><th>S_ID</th><th>S_Name</th><th>Department</th>";
-                        while($row = $result->fetch_assoc()) {
-                                    echo "<tr>";
-                                    echo "<td>".$row['S_ID']."</td>";
-                                    echo "<td>".$row['S_Name']."</td>";
-                                    echo "<td>".$row['department']."</td>";
-                                    echo "</tr>";
-                                     }
-                            echo "</table>";         
+                            echo "</div>";         
                     } 
                     else {
                         echo "0 results";
@@ -189,7 +176,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
           
       </div>
 
-    </div>
+    
     </div>
 </body>
 </html>
