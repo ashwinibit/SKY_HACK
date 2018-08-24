@@ -54,6 +54,7 @@ box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
 
 </style>
 <body>
+<div class='nav-bar'><h4 align='center'>CreateUser</h4></div>
     <?php
 include ('../nav/navsubadmin.php');
 
@@ -67,29 +68,36 @@ include ('../nav/navsubadmin.php');
                             <label for="ID">Scheme_ID</label>
                             <input type="text" id="ID" name="S_ID" placeholder="ID OF SCH..">
                             
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" placeholder="Name Of Sch..">
+                            <label for="name">Scheme_Name</label>
+                            <input type="text" id="sname" name="sname" placeholder="Name Of Sch..">
                             
+                            <label for="area">Scheme_description</label>
+							<br>   <br>
+
+                            <textarea id="textarea" name="desc" placeholder="description of Sch.." ></textarea>
+                            <br><br>
+
                             <label for="area">Area</label>
-                            <input type="text" id="area" name="area" placeholder="Area of Sch..">
-                            
-                             <label for="elig">Eligibility</label> <br>   <br>
 
-                            <textarea id="textarea" name="elig" placeholder="elig of Sch.." ></textarea>
-                            <br><br>
+                            <input type="text" id="area" name="area" placeholder="Area Of Sch..">
 
-                            <label for="benidits">Benifits</label> <br>   <br>
+                            <label for="gen">Gender</label>
+							<input type="text" id="gen" name="gen" placeholder="Gender">
 
-                            <textarea id="ben" name="benifits" placeholder="Benifits of Sch.."></textarea>
-                            <br><br>
-
-                            <label for="department">Department</label>
-                            <select id="department" name="department">
+                            <label for="cat">Catogery</label>
+                            <select id="cat" name="cat">
+                            <option value="Women">Women</option>
+                            <option value="Student">Student</option>
                             <option value="Agriculture">Agriculture</option>
-                            <option value="Energy">Energy</option>
-                            <option value="Health">Health</option>
-                            <option value="Education">Education</option>
-                            </select>
+                            <option value="Labour">Labour</option>
+                            <option value="Business">Business</option>
+							<option value="Services">Services</option>
+							</select>
+							
+							<label for="benidits">Sub_Catogery</label> 
+							
+							<input type="text" id="name" name="name" placeholder="Sub_Catogery Of Sch..">
+
                             
                             <input type="submit" value="Create" name = 'create'>
   </form>
