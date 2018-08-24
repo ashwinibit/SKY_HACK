@@ -10,18 +10,22 @@
 if(isset($_POST['create']))
     { 
     $id=$_POST['S_ID'];
-    $name=$_POST['name'];
-    $area=$_POST['area'];
-    $elig=$_POST['elig'];
-    $benifits=$_POST['benifits'];
-    $department=$_POST['department'];
+    $name=$_POST['sname'];
+    $desc=$_POST['desc'];
+	$area=$_POST['area'];
+	$gen=$_POST['gen'];
+    $cat=$_POST['cat'];
+    $sub_cat=$_POST['sub_cat'];
     
     
 	
 	$con=mysqli_connect("localhost","root","");
-			mysqli_select_db($con,"sky");
+			mysqli_select_db($con,"anjor");
                                           
-   $result=mysqli_query($con,"INSERT INTO `scheme`(`S_ID`, `S_Name`, `area`, `elig`, `benifits`, `department`, `status`) VALUES ('$id', '$name', '$area', '$elig', '$benifits', '$department','inactive')");
+   $result=mysqli_query($con,"INSERT INTO `schemes_details`(`scheme_ID`, `scheme_name`, `scheme_description`, `area`, `gender`, `category`, `sub_category`) VALUES ('$id','$name','$desc','$area','$gen','$cat','$sub_cat')");
+   
+    
+   
    
         header("Location: ../subadmin/createsch.php");
                 exit;
